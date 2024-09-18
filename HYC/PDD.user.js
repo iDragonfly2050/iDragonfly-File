@@ -13,7 +13,7 @@
 (function() {
     'use strict';
 
-    // 定义一个函数来移除广告，更是地啊手动阀手动阀
+    // 定义一个函数来移除广告,sdlfkj
     function removeAds() {
         // 根据广告的 CSS 类、ID 或标签名进行选择并移除
         let adElements = document.querySelectorAll('.ad, .advertisement, .ads, [id*="ad"]');
