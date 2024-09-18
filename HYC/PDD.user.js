@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
-// @version      1.72
+// @version      1.73
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -51,7 +51,7 @@
     function removeAds() {
         // 移除全屏广告
         for (const key in fullScreenAd) {
-            const element = findElement(lc[key]);
+            const element = findElement(fullScreenAd[key]);
             if (element) {
                 element.remove(); // 移除元素
                 console.log(`广告元素 "${key}" 已被移除`);
