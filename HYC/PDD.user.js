@@ -1,10 +1,11 @@
 // ==UserScript==
-// @name         Remove Ads
+// @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  自动移除广告
+// @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
+// @downloadURL  https://github.com/iDragonfly2050/iDragonfly-File/edit/master/HYC/PDD.user.js
 // @grant        none
 // ==/UserScript==
 
