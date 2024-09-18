@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
-// @version      1.71
+// @version      1.72
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -24,7 +24,11 @@
         跨境买菜: '//div[text()="跨境/买菜"]/../..',
         横幅: '//div[@id="mms-main-safe-content"]',
         灰层: '//div[@id="mms-header__mask"]',
+    };
+
+    const fullScreenAd = {
         全屏广告: '//div[@data-testid="beast-core-modal"]',
+        全屏灰层: '//div[@data-testid="beast-core-modal-mask"]',
     };
 
     const texts = [
@@ -45,7 +49,17 @@
 
     // 移除广告元素的函数
     function removeAds() {
-        // 遍历 lc 中的每一个 XPath 表达式
+        // 移除全屏广告
+        for (const key in fullScreenAd) {
+            const element = findElement(lc[key]);
+            if (element) {
+                element.remove(); // 移除元素
+                console.log(`广告元素 "${key}" 已被移除`);
+            }
+        }
+        document.body.style.overflow = "";
+
+        // 移除元素广告
         for (const key in lc) {
             const element = findElement(lc[key]);
             if (element) {
@@ -53,6 +67,8 @@
                 console.log(`广告元素 "${key}" 已被移除`);
             }
         }
+
+        // 移除无用按钮
         for (const text of texts) {
             const element = findElement(
                 `//span[@class="nav-item-text" and text()="${text}"]/../..`
