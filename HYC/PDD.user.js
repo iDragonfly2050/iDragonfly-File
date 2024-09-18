@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      2.3
+// @version      2.41
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -22,6 +22,8 @@
         跨境买菜: '//div[text()="跨境/买菜"]/../..',
         横幅: '//div[@id="mms-main-safe-content"]',
         灰层: '//div[@id="mms-header__mask"]',
+        商品列表轮动广告:
+            '//div[@class="goods-list"]/div/div[contains(@class, "top_notice_new_notice-bar-carousel")]',
     };
 
     const fullScreenAd = {
