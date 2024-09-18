@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
-// @version      1.61
+// @version      1.7
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
