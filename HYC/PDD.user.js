@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.2
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -15,8 +15,6 @@
 
     const lc = {
         TEMU: '//div[@class="nav-item-group"]/div/span[text()="TEMU"]/../..',
-        流量运营:
-            '//div[@class="nav-item-group"]/div/span[text()="流量运营"]/../..',
         采购管理:
             '//div[@class="nav-item-group"]/div/span[text()="采购管理"]/../..',
         品牌管理:
