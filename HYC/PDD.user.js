@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
-// @version      1.41
+// @version      1.42
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -24,7 +24,7 @@
         跨境买菜: '//div[text()="跨境/买菜"]/../..',
         横幅: '//div[@id="mms-main-safe-content"]',
         灰层: '//div[@id="mms-header__mask"]',
-        上门安装: '//span[@class="nav-item-text" and text()="上门安装"]/',
+        上门安装: '//span[@class="nav-item-text" and text()="上门安装"]/../../',
     };
 
     // 移除广告元素的函数
