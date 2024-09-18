@@ -24,8 +24,7 @@
         跨境买菜: '//div[text()="跨境/买菜"]/../..',
         横幅: '//div[@id="mms-main-safe-content"]',
         灰层: '//div[@id="mms-header__mask"]',
-        全屏广告: '//div[@data-testid="beast-core-modal-mask"]',
-        全屏广告身体部分: '//div[@data-testid="beast-core-modal-inner"]',
+        全屏广告: '//div[@data-testid="beast-core-modal"]',
     };
 
     const texts = [
