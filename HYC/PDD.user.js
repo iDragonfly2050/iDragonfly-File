@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -52,10 +52,12 @@
         try {
             // 替换全屏广告
             for (const key in fullScreenAd) {
-                const element = findElement(fullScreenAd[key]);
-                if (element && document.contains(element)) {
+                const elements = findElements(fullScreenAd[key]);
+                for (const e of elements) {
                     console.log(`正在替换广告元素 "${key}"`);
-                    element.style.display = "none";
+                    if (e && document.contains(e)) {
+                        e.style.display = "none";
+                    }
                 }
             }
             document.body.style.overflow = ""; // 重置 body 的 overflow 样式
