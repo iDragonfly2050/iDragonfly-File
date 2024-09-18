@@ -23,6 +23,7 @@
             '//div[@class="nav-item-group"]/div/span[text()="品牌管理"]/../..',
         跨境买菜: '//div[text()="跨境/买菜"]/../..',
         横幅: '//div[@id="mms-main-safe-content"]',
+        灰层: '//div[@id="mms-header__mask"]',
     };
 
     // 移除广告元素的函数
@@ -30,7 +31,7 @@
         // 遍历 lc 中的每一个 XPath 表达式
         for (const key in lc) {
             const element = findElement(lc[key]);
-            element.remove(); // 移除元素
+            element?.remove(); // 移除元素
         }
         console.log("广告元素已被移除");
     }
