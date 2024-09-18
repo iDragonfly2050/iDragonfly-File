@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.61
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -25,6 +25,7 @@
         横幅: '//div[@id="mms-main-safe-content"]',
         灰层: '//div[@id="mms-header__mask"]',
         全屏广告: '//div[@data-testid="beast-core-modal-mask"]',
+        全屏广告身体部分: '//div[@data-testid="beast-core-modal-inner"]',
     };
 
     const texts = [
