@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -24,6 +24,7 @@
         跨境买菜: '//div[text()="跨境/买菜"]/../..',
         横幅: '//div[@id="mms-main-safe-content"]',
         灰层: '//div[@id="mms-header__mask"]',
+        全屏广告: '//div[@data-testid="beast-core-modal-mask"]',
     };
 
     const texts = [
@@ -47,22 +48,27 @@
         // 遍历 lc 中的每一个 XPath 表达式
         for (const key in lc) {
             const element = findElement(lc[key]);
-            element?.remove(); // 移除元素
+            if (element) {
+                element.remove(); // 移除元素
+                console.log(`广告元素 "${key}" 已被移除`);
+            }
         }
         for (const text of texts) {
             const element = findElement(
                 `//span[@class="nav-item-text" and text()="${text}"]/../..`
             );
-            element?.remove(); // 移除元素
+            if (element) {
+                element.remove(); // 移除元素
+                console.log(`广告元素包含文本 "${text}" 已被移除`);
+            }
         }
 
+        // 获取多个元素并修改样式
         let elements = findElements(groups);
-        elements.forEach((element) => {
+        elements.forEach((element, index) => {
             element.style.height = "auto";
-            console.log("调整了高度");
+            console.log(`元素 "group" 索引 ${index} 的高度已设置为 auto`);
         });
-
-        console.log("广告元素已被移除");
     }
 
     // 在页面加载完成时运行
