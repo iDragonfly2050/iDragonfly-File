@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove PDD Ads
 // @namespace    http://tampermonkey.net/
-// @version      1.43
+// @version      1.5
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -24,8 +24,23 @@
         跨境买菜: '//div[text()="跨境/买菜"]/../..',
         横幅: '//div[@id="mms-main-safe-content"]',
         灰层: '//div[@id="mms-header__mask"]',
-        上门安装: '//span[@class="nav-item-text" and text()="上门安装"]/../../',
     };
+
+    const texts = [
+        "上门安装",
+        "机会商品",
+        "供货管理",
+        "勋章馆",
+        "能力认证",
+        "平台招标",
+        "多多直播",
+        "直播推广",
+        "明星店铺",
+        "爆款竞价",
+        "全店托管",
+    ];
+
+    const groups = '//ul[@class="nav-item-group-content"]';
 
     // 移除广告元素的函数
     function removeAds() {
@@ -34,6 +49,19 @@
             const element = findElement(lc[key]);
             element?.remove(); // 移除元素
         }
+        for (const text of texts) {
+            const element = findElement(
+                `//span[@class="nav-item-text" and text()="${text}"]/../..`
+            );
+            element?.remove(); // 移除元素
+        }
+
+        let elements = findElements(groups);
+        elements.forEach((element) => {
+            element.style.height = "auto";
+            console.log("调整了高度");
+        });
+
         console.log("广告元素已被移除");
     }
 
@@ -66,11 +94,18 @@ function findElement(xpath, context) {
         .singleNodeValue;
 }
 
-// 获取多个节点
+// 获取多个节点并返回数组
 function findElements(xpath, context) {
-    return getXPathResult(
+    const snapshot = getXPathResult(
         xpath,
         context,
         XPathResult.ORDERED_NODE_SNAPSHOT_TYPE
     );
+
+    const elements = [];
+    for (let i = 0; i < snapshot.snapshotLength; i++) {
+        elements.push(snapshot.snapshotItem(i));
+    }
+
+    return elements; // 返回数组
 }
