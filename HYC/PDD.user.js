@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      1.9
+// @version      2.0
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -48,53 +48,49 @@
         "全店托管",
     ];
 
-    const groups = '//ul[@class="nav-item-group-content"]';
-
-    // 调整分组高度
-    function adjust_group_height() {
-        let elements = findElements(groups);
-        elements.forEach((element, index) => {
-            element.style.height = "auto";
-            // console.log(`元素 "group" 索引 ${index} 的高度已设置为 auto`);
-        });
-    }
-
-    // 移除广告元素的函数
     function removeAds() {
         try {
-            // 移除全屏广告
+            // 替换全屏广告
             for (const key in fullScreenAd) {
                 const element = findElement(fullScreenAd[key]);
                 if (element && document.contains(element)) {
-                    element.parentNode.removeChild(element);
-                    console.log(`广告元素 "${key}" 已被移除`);
+                    console.log(`正在替换广告元素 "${key}"`);
+                    element.style.display = "none";
                 }
             }
             document.body.style.overflow = ""; // 重置 body 的 overflow 样式
 
-            // 移除元素广告
+            // 替换元素广告
             for (const key in lc) {
                 const element = findElement(lc[key]);
                 if (element && document.contains(element)) {
-                    element.parentNode.removeChild(element);
-                    console.log(`广告元素 "${key}" 已被移除`);
+                    console.log(`正在替换广告元素 "${key}"`);
+                    element.style.display = "none";
                 }
             }
 
-            // 移除无用按钮
+            // 替换无用按钮
             for (const text of texts) {
                 const element = findElement(
                     `//span[@class="nav-item-text" and text()="${text}"]/../..`
                 );
                 if (element && document.contains(element)) {
-                    element.parentNode.removeChild(element);
-                    console.log(`广告元素包含文本 "${text}" 已被移除`);
+                    console.log(`正在替换广告元素包含文本 "${text}"`);
+                    const parent = element.parentNode;
+                    if (parent) {
+                        element.style.display = "none";
+                        parent.style.setProperty("height", "auto", "important");
+                    }
                 }
             }
 
-            adjust_group_height();
+            // 设置格式
+            const elements = findElements(`//li[@class="nav-item"]`);
+            for (const e of elements) {
+                e.style.setProperty("margin-right", "6px", "important");
+            }
         } catch (error) {
-            console.error("移除广告时发生错误：", error);
+            console.error("替换广告时发生错误：", error);
         }
     }
 
@@ -111,10 +107,10 @@
     }
 
     // 在页面加载完成时运行广告移除
-    window.addEventListener("load", removeAdsLater);
+    window.addEventListener("load", removeAds);
 
     // 使用 MutationObserver 持续监听页面变化并移除广告
-    const observer = new MutationObserver(removeAdsLater);
+    const observer = new MutationObserver(removeAds);
 
     observer.observe(document.body, {
         childList: true,
