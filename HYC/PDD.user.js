@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      2.2
+// @version      2.3
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -44,6 +44,12 @@
         "订单开票",
         "爆款竞价",
         "全店托管",
+        "高价商品",
+        "品牌权益",
+        "同款竞价",
+        "一键降成本",
+        "好价拿流量",
+        "新品免费起量",
     ];
 
     function removeAds() {
