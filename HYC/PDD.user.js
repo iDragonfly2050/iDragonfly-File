@@ -5,6 +5,7 @@
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
+// @updateURL    https://raw.githubusercontent.com/iDragonfly2050/iDragonfly-File/edit/master/HYC/PDD.user.js
 // @downloadURL  https://raw.githubusercontent.com/iDragonfly2050/iDragonfly-File/edit/master/HYC/PDD.user.js
 // @grant        none
 // ==/UserScript==
@@ -12,7 +13,7 @@
 (function() {
     'use strict';
 
-    // 定义一个函数来移除广告
+    // 定义一个函数来移除广告，更是地理空间
     function removeAds() {
         // 根据广告的 CSS 类、ID 或标签名进行选择并移除
         let adElements = document.querySelectorAll('.ad, .advertisement, .ads, [id*="ad"]');
