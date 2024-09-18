@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Remove PDD Ads
+// @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      1.73
-// @description  自动移除拼多多广告
+// @version      1.8
+// @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
 // @updateURL    https://raw.githubusercontent.com/iDragonfly2050/iDragonfly-File/master/HYC/PDD.user.js
@@ -39,59 +39,82 @@
         "能力认证",
         "平台招标",
         "多多直播",
+        "退店",
+        "安全风险",
         "直播推广",
         "明星店铺",
+        "订单开票",
         "爆款竞价",
         "全店托管",
     ];
 
     const groups = '//ul[@class="nav-item-group-content"]';
 
-    // 移除广告元素的函数
-    function removeAds() {
-        // 移除全屏广告
-        for (const key in fullScreenAd) {
-            const element = findElement(fullScreenAd[key]);
-            if (element) {
-                element.remove(); // 移除元素
-                console.log(`广告元素 "${key}" 已被移除`);
-            }
-        }
-        document.body.style.overflow = "";
-
-        // 移除元素广告
-        for (const key in lc) {
-            const element = findElement(lc[key]);
-            if (element) {
-                element.remove(); // 移除元素
-                console.log(`广告元素 "${key}" 已被移除`);
-            }
-        }
-
-        // 移除无用按钮
-        for (const text of texts) {
-            const element = findElement(
-                `//span[@class="nav-item-text" and text()="${text}"]/../..`
-            );
-            if (element) {
-                element.remove(); // 移除元素
-                console.log(`广告元素包含文本 "${text}" 已被移除`);
-            }
-        }
-
-        // 获取多个元素并修改样式
+    // 调整分组高度
+    function adjust_group_height() {
         let elements = findElements(groups);
         elements.forEach((element, index) => {
             element.style.height = "auto";
-            console.log(`元素 "group" 索引 ${index} 的高度已设置为 auto`);
+            // console.log(`元素 "group" 索引 ${index} 的高度已设置为 auto`);
         });
     }
 
-    // 在页面加载完成时运行
-    window.addEventListener("load", removeAds);
+    // 移除广告元素的函数
+    function removeAds() {
+        try {
+            // 移除全屏广告
+            for (const key in fullScreenAd) {
+                const element = findElement(fullScreenAd[key]);
+                if (element && document.contains(element)) {
+                    element.parentNode.removeChild(element);
+                    console.log(`广告元素 "${key}" 已被移除`);
+                }
+            }
+            document.body.style.overflow = ""; // 重置 body 的 overflow 样式
+
+            // 移除元素广告
+            for (const key in lc) {
+                const element = findElement(lc[key]);
+                if (element && document.contains(element)) {
+                    element.parentNode.removeChild(element);
+                    console.log(`广告元素 "${key}" 已被移除`);
+                }
+            }
+
+            // 移除无用按钮
+            for (const text of texts) {
+                const element = findElement(
+                    `//span[@class="nav-item-text" and text()="${text}"]/../..`
+                );
+                if (element && document.contains(element)) {
+                    element.parentNode.removeChild(element);
+                    console.log(`广告元素包含文本 "${text}" 已被移除`);
+                }
+            }
+
+            adjust_group_height();
+        } catch (error) {
+            console.error("移除广告时发生错误：", error);
+        }
+    }
+
+    let debounceTimer; // 定时器 ID 用于防抖
+
+    // 延迟广告移除的函数（防抖动）
+    function removeAdsLater() {
+        if (debounceTimer) {
+            clearTimeout(debounceTimer); // 清除前一次的定时器
+        }
+        debounceTimer = setTimeout(() => {
+            removeAds();
+        }, 200); // 200ms 后调用 removeAds
+    }
+
+    // 在页面加载完成时运行广告移除
+    window.addEventListener("load", removeAdsLater);
 
     // 使用 MutationObserver 持续监听页面变化并移除广告
-    const observer = new MutationObserver(removeAds);
+    const observer = new MutationObserver(removeAdsLater);
 
     observer.observe(document.body, {
         childList: true,
