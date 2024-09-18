@@ -13,7 +13,7 @@
 (function() {
     'use strict';
 
-    // 定义一个函数来移除广告2222222222222222222111
+    // 定义一个函数来移除广告3333333333333333333
     function removeAds() {
         // 根据广告的 CSS 类、ID 或标签名进行选择并移除
         let adElements = document.querySelectorAll('.ad, .advertisement, .ads, [id*="ad"]');
