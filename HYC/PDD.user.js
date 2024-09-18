@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      1.8
+// @version      1.81
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -107,7 +107,7 @@
         }
         debounceTimer = setTimeout(() => {
             removeAds();
-        }, 200); // 200ms 后调用 removeAds
+        }, 100);
     }
 
     // 在页面加载完成时运行广告移除
