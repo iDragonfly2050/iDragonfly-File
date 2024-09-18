@@ -5,8 +5,8 @@
 // @description  自动移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
-// @updateURL    https://raw.githubusercontent.com/iDragonfly2050/iDragonfly-File/edit/master/HYC/PDD.user.js
-// @downloadURL  https://raw.githubusercontent.com/iDragonfly2050/iDragonfly-File/edit/master/HYC/PDD.user.js
+// @updateURL    https://github.com/iDragonfly2050/iDragonfly-File/blob/master/HYC/PDD.user.js
+// @downloadURL  https://github.com/iDragonfly2050/iDragonfly-File/blob/master/HYC/PDD.user.js
 // @grant        none
 // ==/UserScript==
 
