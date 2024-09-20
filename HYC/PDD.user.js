@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.0
+// @version      3.1
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -32,6 +32,8 @@
         全屏灰层: '//div[@data-testid="beast-core-modal-mask"]',
     };
 
+    const fullScreenAdTags = {};
+
     const texts = [
         "上门安装",
         "机会商品",
@@ -58,17 +60,9 @@
 
     function removeAds() {
         try {
-            // 替换全屏广告
-            for (const key in fullScreenAd) {
-                const elements = findElements(fullScreenAd[key]);
-                for (const e of elements) {
-                    console.log(`正在替换广告元素 "${key}"`);
-                    if (e && document.contains(e)) {
-                        e.style.display = "none";
-                    }
-                }
+            for (const tag in fullScreenAdTags) {
+                removeFullScreenAd();
             }
-            document.body.style.overflow = ""; // 重置 body 的 overflow 样式
 
             // 替换元素广告
             for (const key in lc) {
@@ -104,16 +98,18 @@
         }
     }
 
-    let debounceTimer; // 定时器 ID 用于防抖
-
-    // 延迟广告移除的函数（防抖动）
-    function removeAdsLater() {
-        if (debounceTimer) {
-            clearTimeout(debounceTimer); // 清除前一次的定时器
+    // 移除全屏广告
+    function removeFullScreenAd() {
+        for (const key in fullScreenAd) {
+            const elements = findElements(fullScreenAd[key]);
+            for (const e of elements) {
+                console.log(`正在替换广告元素 "${key}"`);
+                if (e && document.contains(e)) {
+                    e.style.display = "none";
+                }
+            }
         }
-        debounceTimer = setTimeout(() => {
-            removeAds();
-        }, 100);
+        document.body.style.overflow = ""; // 重置 body 的 overflow 样式
     }
 
     // 在页面加载完成时运行广告移除
