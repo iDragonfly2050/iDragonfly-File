@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.4
+// @version      3.5
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -38,6 +38,7 @@
         自定义LOGO:
             ".//img[contains(@src, 'https://commimg.pddpic.com/mms_static/2020-01-16/82ce4f6c-9ce6-466c-aadb-28a3f483b8b7.png')]",
         百亿减免提现门槛: ".//span[contains(text(), '商家货款账户提现门槛')]",
+        全店报名: './/span[contains(text(), "全店报名")]',
     };
 
     const texts = [
