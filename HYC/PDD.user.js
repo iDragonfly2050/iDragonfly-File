@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.5
+// @version      3.6
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -69,7 +69,7 @@
         try {
             for (const tag in fullScreenAdTags) {
                 const fullAd = findElement(fullScreenAd["全屏广告"]);
-                if (fullAd) {
+                if (fullAd && fullAd.style.display !== "none") {
                     if (findElement(fullScreenAdTags[tag], fullAd)) {
                         console.log(`正在替换全屏广告元素 "${tag}"`);
                         removeFullScreenAd();
