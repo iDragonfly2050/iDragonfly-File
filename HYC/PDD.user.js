@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.2
+// @version      3.3
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -93,9 +93,9 @@
                     `//span[@class="nav-item-text" and text()="${text}"]/../..`
                 );
                 if (element && document.contains(element)) {
-                    console.log(`正在替换广告元素包含文本 "${text}"`);
                     const parent = element.parentNode;
                     if (parent) {
+                        console.log(`正在替换广告元素包含文本 "${text}"`);
                         element.style.display = "none";
                         parent.style.setProperty("height", "auto", "important");
                     }
