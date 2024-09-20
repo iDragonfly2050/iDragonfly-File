@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      2.41
+// @version      2.5
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -24,6 +24,7 @@
         灰层: '//div[@id="mms-header__mask"]',
         商品列表轮动广告:
             '//div[@class="goods-list"]/div/div[contains(@class, "top_notice_new_notice-bar-carousel")]',
+        新消息: '//section[contains(@class, "NewMsgBox_important-wrapper")]',
     };
 
     const fullScreenAd = {
@@ -46,6 +47,7 @@
         "订单开票",
         "爆款竞价",
         "全店托管",
+        //流量运营
         "高价商品",
         "品牌权益",
         "同款竞价",
