@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      2.5
+// @version      2.51
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
