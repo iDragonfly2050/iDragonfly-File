@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.3
+// @version      3.4
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -74,14 +74,18 @@
                         removeFullScreenAd();
                     }
                 } else {
-                    console.log(`没有找到全屏广告`);
+                    // console.log(`没有找到全屏广告`);
                 }
             }
 
             // 替换元素广告
             for (const key in lc) {
                 const element = findElement(lc[key]);
-                if (element && document.contains(element)) {
+                if (
+                    element &&
+                    document.contains(element) &&
+                    element.style.display !== "none"
+                ) {
                     console.log(`正在替换广告元素 "${key}"`);
                     element.style.display = "none";
                 }
@@ -92,7 +96,11 @@
                 const element = findElement(
                     `//span[@class="nav-item-text" and text()="${text}"]/../..`
                 );
-                if (element && document.contains(element)) {
+                if (
+                    element &&
+                    document.contains(element) &&
+                    element.style.display !== "none"
+                ) {
                     const parent = element.parentNode;
                     if (parent) {
                         console.log(`正在替换广告元素包含文本 "${text}"`);
