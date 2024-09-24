@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.10
+// @version      3.12
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -28,6 +28,8 @@
         活动页广告:
             '//section[contains(@class, "resource-and-recommend-enroll_wrapper")]',
         活动页横幅: '//div[@data-testid="beast-core-noticeBar"]',
+        活动页快速报名通道:
+            '//div[@data-tracking-impr-viewid="quick_enroll_shared_shared"]',
     };
 
     const fullScreenAd = {
@@ -40,6 +42,8 @@
             ".//img[contains(@src, 'https://funimg.pddpic.com/msfe/afc888f4-dccd-4aef-9787-5cfaf4c498f8.png')]",
         自定义LOGO:
             ".//img[contains(@src, 'https://commimg.pddpic.com/mms_static/2020-01-16/82ce4f6c-9ce6-466c-aadb-28a3f483b8b7.png')]",
+        短信营销:
+            ".//img[contains(@src, 'https://mms-static.pddpic.com/tool/static/media/smsBg.45a25fe0.png')]",
         百亿减免提现门槛: ".//span[contains(text(), '商家货款账户提现门槛')]",
         全店报名: './/span[contains(text(), "全店报名")]',
         抢单广告:
