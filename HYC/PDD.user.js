@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.8
+// @version      3.9
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -25,6 +25,8 @@
         商品列表轮动广告:
             '//div[@class="goods-list"]/div/div[contains(@class, "top_notice_new_notice-bar-carousel")]',
         新消息: '//section[contains(@class, "NewMsgBox_important-wrapper")]',
+        活动页广告:
+            '//section[contains(@class, "resource-and-recommend-enroll_wrapper")]',
     };
 
     const fullScreenAd = {
