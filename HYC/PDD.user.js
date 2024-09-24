@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.7
+// @version      3.8
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -41,6 +41,7 @@
         全店报名: './/span[contains(text(), "全店报名")]',
         抢单广告:
             ".//img[contains(@src, 'https://pfile.pddpic.com/oms_file/2024-07-16/da78e9397075426ab3d35b53e8f3aaa5.png')]",
+        资源位清退: './/span[contains(text(), "资源位清退")]',
     };
 
     const texts = [
