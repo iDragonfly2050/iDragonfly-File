@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.9
+// @version      3.10
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -27,6 +27,7 @@
         新消息: '//section[contains(@class, "NewMsgBox_important-wrapper")]',
         活动页广告:
             '//section[contains(@class, "resource-and-recommend-enroll_wrapper")]',
+        活动页横幅: '//div[@data-testid="beast-core-noticeBar"]',
     };
 
     const fullScreenAd = {
