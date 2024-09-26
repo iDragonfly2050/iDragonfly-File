@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.14
+// @version      3.15
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -32,6 +32,7 @@
         活动页快速报名通道:
             '//div[@data-tracking-impr-viewid="quick_enroll_shared_shared"]',
         买家端气泡: '//div[@class="ui-bubble-container"]',
+        买家端关注券: '//div[contains(@class, "couponList")]',
     };
 
     const fullScreenAd = {
