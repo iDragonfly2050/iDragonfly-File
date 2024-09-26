@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.13
+// @version      3.14
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
+// @include      https://*.yangkeduo.com/*
 // @updateURL    https://raw.githubusercontent.com/iDragonfly2050/iDragonfly-File/master/HYC/PDD.user.js
 // @downloadURL  https://raw.githubusercontent.com/iDragonfly2050/iDragonfly-File/master/HYC/PDD.user.js
 // @grant        none
@@ -30,6 +31,7 @@
         活动页横幅: '//div[@data-testid="beast-core-noticeBar"]',
         活动页快速报名通道:
             '//div[@data-tracking-impr-viewid="quick_enroll_shared_shared"]',
+        买家端气泡: '//div[@class="ui-bubble-container"]',
     };
 
     const fullScreenAd = {
