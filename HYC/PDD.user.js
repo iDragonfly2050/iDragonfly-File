@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         移除拼多多广告
 // @namespace    http://tampermonkey.net/
-// @version      3.15
+// @version      3.17
 // @description  移除拼多多广告
 // @author       You
 // @include      https://*.pinduoduo.com/*
@@ -26,6 +26,7 @@
         商品列表轮动广告:
             '//div[@class="goods-list"]/div/div[contains(@class, "top_notice_new_notice-bar-carousel")]',
         新消息: '//section[contains(@class, "NewMsgBox_important-wrapper")]',
+        官方客服浮窗: '//div[@id="PDD-CHICKEN-EXPAND-WRAP"]',
         活动页广告:
             '//section[contains(@class, "resource-and-recommend-enroll_wrapper")]',
         活动页横幅: '//div[@data-testid="beast-core-noticeBar"]',
@@ -53,6 +54,7 @@
             ".//img[contains(@src, 'https://pfile.pddpic.com/oms_file/2024-07-16/da78e9397075426ab3d35b53e8f3aaa5.png')]",
         资源位清退: './/span[contains(text(), "资源位清退")]',
         免费中转: './/span[contains(text(), "免费中转")]',
+        立即设置享流量: './/div[contains(text(), "立即设置享流量")]',
     };
 
     const texts = [
