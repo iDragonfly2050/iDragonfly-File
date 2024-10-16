@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         优化Coze界面
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  优化Coze界面
 // @author       You
 // @include      https://www.coze.com/space/*/bot/*
@@ -18,6 +18,7 @@
         横幅2: '//*[@id="root"]/div/div/div/div/div/div/div/div[2]/div[1]/div[2]/div/div[1]',
         左边: '//*[@id="root"]/div/div/div/div/div/div/div/div[2]/div[1]/div[1]',
         底部: '//*[@id="root"]/div/div/div/div/div/div/div/div[2]/div[1]/div[2]/div/div[5]/div[2]/div/div[2]',
+        // 建议列表: '//div[@data-testid="chat-area.suggestion-list"]',
     };
 
     const css_lc = {
