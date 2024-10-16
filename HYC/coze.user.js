@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         优化Coze界面
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  优化Coze界面
 // @author       You
 // @include      https://www.coze.com/space/*/bot/*
@@ -44,8 +44,8 @@
             element.style.display = "flex";
             element.style.justifyContent = "center";
             element.style.alignItems = "center";
-            element.style.marginLeft = "20%";
-            element.style.marginRight = "20%";
+            element.style.marginLeft = "15%";
+            element.style.marginRight = "15%";
         } catch (error) {
             console.error("替换广告时发生错误：", error);
         }
